@@ -5,3 +5,13 @@ body {
   font-size: x-large;
   margin: 1em;
 }
+
+.todo {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #bbb;
+    width: 250px;
+    min-height: 180px;
+    padding: 20px;
+    margin-right: 10px;
+}

@@ -1,0 +1,23 @@
+<h1>Uppdatera todo</h1>
+
+<form action="/todos/<%= @todo["id"] %>/update" method="POST">
+
+    <p>
+        Titel:
+        <input type="text" name="name" value="<%= @todo["name"] %>">
+    </p>
+
+    <p>
+        Beskrivning:
+        <input type="text" name="description" value="<%= @todo["description"] %>">
+    </p>
+
+    <p>
+        Färdig:
+        <input type="checkbox" name="completed" <%= "checked" if @todo["completed"] == 1 %>>
+    </p>
+
+    <button type="submit">Uppdatera</button>
+</form>
+
+<a href="/todos">Tillbaka till alla todos</a>

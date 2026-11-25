@@ -1,13 +1,53 @@
 <h1>Todo-lista</h1>
 
-<% @todos.each do |todo| %>
-    <div class="todo">
-        <h2>
-            <a href="/todos/<%= todo["id"] %>">
-                <%= todo["name"] %>
-            </a>
-        </h2>
+<p><a href="/todos/new">Skapa ny todo</a></p>
 
-        <p><%= todo["description"] %></p>
-    </div>
+<h2>Att göra</h2>
+
+<% @todos.each do |todo| %>
+    <% if todo["completed"] == 0 %>
+        <div class="todo">
+            <h2>
+                <a href="/todos/<%= todo["id"] %>">
+                    <%= todo["name"] %>
+                </a>
+            </h2>
+
+            <p><%= todo["description"] %></p>
+
+            <form action="/todos/<%= todo["id"] %>/complete" method="POST">
+                <button type="submit">Klar</button>
+            </form>
+
+            <form action="/todos/<%= todo["id"] %>/delete" method="POST">
+                <button type="submit">Ta bort</button>
+            </form>
+        </div>
+    <% end %>
+<% end %>
+
+<h2>Klara</h2>
+
+<% @todos.each do |todo| %>
+    <% if todo["completed"] == 1 %>
+        <div class="todo klar">
+            <h2>
+                <a href="/todos/<%= todo["id"] %>">
+                    <%= todo["name"] %>
+                </a>
+            </h2>
+
+            <p><%= todo["description"] %></p>
+
+            <p>Status: Klar ✓</p>
+
+            <form action="/todos/<%= todo["id"] %>/incomplete" method="POST">
+                <button type="submit">Ofärdig</button>
+            </form>
+
+            <form action="/todos/<%= todo["id"] %>/delete" method="POST">
+                <button type="submit">Ta bort</button>
+            </form>
+        </div>
+    <% end %>
 <% end %>
